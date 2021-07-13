@@ -49,6 +49,12 @@ public class RoomController {
 
 
 
+
+
+
+
+
+    //테스트용도
     @MessageMapping("/hello")
     public void hello(String tmp){
         System.out.println(tmp);
