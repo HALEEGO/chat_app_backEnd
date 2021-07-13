@@ -16,6 +16,5 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Room {
-    private int RoomID;
-
+    private String roomID;
 }
