@@ -12,9 +12,8 @@ public class ChatMessage {
         MOVE , TALK
     }
     public enum MoveType {
-        ENTER, EXIST
+        ENTER, EXIT
     }
-
     private MessageType messagetype; // 메시지 타입
     private MoveType movetype; // 이동 타입
     private  String roomID; // 방번호
