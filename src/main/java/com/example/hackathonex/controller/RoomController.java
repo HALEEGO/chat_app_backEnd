@@ -4,6 +4,9 @@ package com.example.hackathonex.controller;
 import com.example.hackathonex.DTO.Returns;
 import com.example.hackathonex.constant.Url;
 import com.example.hackathonex.model.ChatMessage;
+import com.example.hackathonex.model.Room;
+import com.example.hackathonex.model.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -41,7 +44,7 @@ public class RoomController {
 
         returns.append("/userlist/").append(RoomID);
         returns.put("userlist", users.toString());
-
+        ObjectMapper om = new ObjectMapper();
         messagingTemplate.convertAndSend(returns.getReturnURL().toString() , returns.getReturnValue());
     } //방에있는 유저들에게 그방 인원 쏴주기 호스트가
     //path = RoomID , Body = UserList
@@ -56,9 +59,12 @@ public class RoomController {
 
     //테스트용도
     @MessageMapping("/hello")
-    public void hello(String tmp){
-        System.out.println(tmp);
-        messagingTemplate.convertAndSend("/topic/greetings","hello"+tmp);
+    public void hello(Room r, ChatMessage cm){
+        System.out.println("ok");
+
+        messagingTemplate.convertAndSend("/topic/greetings", r.getRoomID());
+        messagingTemplate.convertAndSend("/topic/greeting", cm.getRoomID());
+        System.out.println("ok");
     }
 
 
