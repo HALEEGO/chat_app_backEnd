@@ -1,7 +1,6 @@
-package com.example.hackathonex.DTO;
+package com.example.hackathonex.constant;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
