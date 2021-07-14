@@ -1,19 +1,12 @@
 package com.example.hackathonex.model;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.example.hackathonex.constant.Enum.MessageType;
+import com.example.hackathonex.constant.Enum.MoveType;
 import lombok.*;
 
 
-@Data
-@NoArgsConstructor
 public class ChatMessage {
-    // 메시지 타입 : 입장, 채팅
-    public enum MessageType {
-        MOVE , TALK
-    }
-    public enum MoveType {
-        ENTER, EXIT
-    }
+
     private MessageType messagetype; // 메시지 타입
     private MoveType movetype; // 이동 타입
     private  String roomID; // 방번호

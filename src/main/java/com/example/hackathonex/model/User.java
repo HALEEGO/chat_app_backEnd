@@ -1,13 +1,11 @@
 package com.example.hackathonex.model;
 
 
+import com.example.hackathonex.constant.Enum.Role;
 import lombok.Data;
 
-@Data
 public class User {
-    public enum Role {
-        HOST, PARTICIPANT
-    }
+
     private Role role;
     private String userName;
 

@@ -11,10 +11,6 @@ import java.util.Set;
 
 
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Room {
     private String roomID;
 }
