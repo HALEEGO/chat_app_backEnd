@@ -22,7 +22,6 @@ public class RoomController {
     private final SimpMessageSendingOperations messagingTemplate;
     Returns returns;
 
-
     @MessageMapping("/usermove")
     public void move(ChatMessageDTO message){
         returns = new Returns(ConstantURL.topic);
