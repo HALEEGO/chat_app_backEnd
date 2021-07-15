@@ -3,6 +3,7 @@ package com.example.hackathonex.controller;
 
 import com.example.hackathonex.DTO.ChatMessageDTO;
 import com.example.hackathonex.DTO.RoomDTO;
+import com.example.hackathonex.DTO.UserDTO;
 import com.example.hackathonex.constant.ConstantURL;
 import com.example.hackathonex.constant.Returns;
 import lombok.RequiredArgsConstructor;
@@ -23,15 +24,17 @@ public class RoomController {
     Returns returns;
 
     @MessageMapping("/usermove")
-    public void move(ChatMessageDTO message){
+    public void move(ChatMessageDTO message, UserDTO user){
+        System.out.println("ddddd");
         returns = new Returns(ConstantURL.topic);
 
-        returns.append("/usermove/").append(message.getRoomID()).append("/Host"); // 리턴 url
-        returns.put("RoomID", message.getRoomID()).put("UserName",message.getUserName())
-                .put("MessageType",message.getMessagetype().toString()).put("MoveType",message.getMovetype().toString());
-
-        messagingTemplate.convertAndSend(returns.getReturnURL().toString(), returns.getReturnValue());
-    }//RoomID , UserName , MessageType = Move, MoveType = ENTER or EXIST
+        returns.append("/usermove/").append(message.getRoomID()).append("/HOST"); // 리턴 url
+//        returns.put("RoomID", message.getRoomID()).put("UserName",message.getUserName())
+//                .put("MessageType",message.getMessagetype().toString()).put("MoveType",message.getMovetype().toString())
+//                .put("role",user.getRole().toString());
+        System.out.println(returns.getReturnURL().toString());
+        messagingTemplate.convertAndSend(returns.getReturnURL().toString(), message);
+    }//RoomID , UserName , MessageType = Move, MoveType = ENTER or EXIST, role
 
 
 
@@ -56,12 +59,9 @@ public class RoomController {
 
     //테스트용도
     @MessageMapping("/hello")
-    public void hello(RoomDTO r, ChatMessageDTO cm){
+    public void hello(String st){
         System.out.println("ok");
-
-        messagingTemplate.convertAndSend("/topic/greetings", r.getRoomID());
-        messagingTemplate.convertAndSend("/topic/greeting", cm.getRoomID());
-        System.out.println("ok");
+        messagingTemplate.convertAndSend("/topic/greetings", st);
     }
 
 
