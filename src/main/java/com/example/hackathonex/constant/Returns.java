@@ -15,7 +15,7 @@ public class Returns {
         returnValue = new HashMap<>();
     }
     public Returns(String url){
-        returnURL = new StringBuilder("url");
+        returnURL = new StringBuilder(url);
         returnValue = new HashMap<>();
     }
 
