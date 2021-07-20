@@ -26,14 +26,10 @@ public class ChatController {
 
         returns
                 .append(ConstantURL.topic)
-                .append("/sendchat/")
-                .append(message.getRoomID());
-        returns
-                .put("userName", message.getUser().getUserName())
-                .put("context", message.getContext());
+                .append(message.getRoom().getRoomID());
 
         if (message.getMessagetype() == MessageType.TALK) {
-            messagingTemplate.convertAndSend(returns.getReturnURL().toString(), returns.getReturnValue());
+            messagingTemplate.convertAndSend(returns.getReturnURL().toString(), message);
         }
     }
 }
