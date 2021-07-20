@@ -2,6 +2,7 @@ package com.example.hackathonex.constant;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
 
 import java.util.HashMap;
 import java.util.Map;
